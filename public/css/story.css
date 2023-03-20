@@ -1,0 +1,342 @@
+.window-story .btn {
+	border: hidden;
+	background: var(--light);
+	color: var(--dark);
+	text-align: center;
+
+	padding: 1rem;
+	border-radius: 12px;
+	text-decoration: none;
+
+    width: 100%;
+}
+
+.animContainer > canvas {
+    width: 100%;
+}
+
+.save-toggle-label {
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: url(../images/heart-regular.svg) no-repeat center center;
+    top: 1rem;
+    right: 1rem;
+    border: none;
+}   
+
+.save-toggle {
+    display: none;
+}
+
+.save-toggle-label:has(.save-toggle:checked) {
+    background: url(../images/heart-solid.svg) no-repeat center center;
+}
+
+.story-saved-notif {
+    width: 90%;
+    padding: 1rem;
+    background: var(--secondary);
+    color: var(--white);
+    border-radius: 12px;
+    text-align: center;
+
+    position: absolute;
+    top: 0;
+    transform: translateY(-100%);
+    z-index: 100;
+}
+
+.saved-notif-slide-in {
+    animation: saved-notif-slide-in .2s ease-in-out forwards, saved-notif-slide-out .2s ease-in-out 1.5s forwards;
+}
+
+@keyframes saved-notif-slide-in {
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+@keyframes saved-notif-slide-out {
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+.window-success {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin-top: 1.5rem;
+}
+
+.story-success-text-container {
+    position: relative;
+    height: 50%;
+}
+
+.story-success-text-container p {
+    font-size: 1.25rem;
+    font-weight: bold;
+    line-height: 160%;
+    height: 100%;
+    overflow-y: scroll;
+    padding-bottom: 3rem;
+}
+
+.story-success-text-container span {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 4rem;
+    background: linear-gradient( rgb(255 255 255 / 0) 0%, var(--primary) 100%);
+    bottom: 0;
+    pointer-events: none;
+}
+
+.window-success > span {
+    display: flex;
+
+    margin-top: .5rem;
+    margin-bottom: 1.5rem;
+}
+
+.window-success > .animContainer {
+    width: clamp(10rem, 85%, 21rem);
+    position: absolute;
+    bottom: -4rem;
+    right: -5rem;
+    aspect-ratio: 1/1;
+    pointer-events: none;
+}
+
+.window-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.window-error > img {
+    width: 80%;
+}    
+
+
+.animContainer > canvas {
+    width: 100%;
+}
+
+.save-toggle-label {
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: url(../images/heart-regular.svg) no-repeat center center;
+    top: 1rem;
+    right: 1rem;
+    border: none;
+}   
+
+.save-toggle {
+    display: none;
+}
+
+.save-toggle-label:has(.save-toggle:checked) {
+    background: url(../images/heart-solid.svg) no-repeat center center;
+}
+
+.story-saved-notif {
+    width: 90%;
+    padding: 1rem;
+    background: var(--secondary);
+    color: var(--white);
+    border-radius: 12px;
+    text-align: center;
+
+    position: absolute;
+    top: 0;
+    transform: translateY(-100%);
+    z-index: 100;
+}
+
+.saved-notif-slide-in {
+    animation: saved-notif-slide-in .2s ease-in-out forwards, saved-notif-slide-out .2s ease-in-out 1.5s forwards;
+}
+
+@keyframes saved-notif-slide-in {
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+@keyframes saved-notif-slide-out {
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+.window-success {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin-top: 1.5rem;
+}
+
+.story-success-text-container {
+    position: relative;
+    height: 50%;
+}
+
+.story-success-text-container p {
+    font-size: 1.25rem;
+    font-weight: bold;
+    line-height: 160%;
+    height: 100%;
+    overflow-y: scroll;
+    padding-bottom: 3rem;
+}
+
+.story-success-text-container span {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 4rem;
+    background: linear-gradient( rgb(255 255 255 / 0) 0%, var(--primary) 100%);
+    bottom: 0;
+    pointer-events: none;
+}
+
+.window-success > span {
+    display: flex;
+
+    margin-top: .5rem;
+    margin-bottom: 1.5rem;
+}
+
+.window-success > .animContainer {
+    width: clamp(10rem, 85%, 21rem);
+    position: absolute;
+    bottom: -4rem;
+    right: -5rem;
+    aspect-ratio: 1/1;
+    pointer-events: none;
+}
+
+.window-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.window-error > img {
+    width: 80%;
+}
+.animContainer > canvas {
+    width: 100%;
+}
+
+.save-toggle-label {
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: url(../images/heart-regular.svg) no-repeat center center;
+    top: 1rem;
+    right: 1rem;
+    border: none;
+}   
+
+.save-toggle {
+    display: none;
+}
+
+.save-toggle-label:has(.save-toggle:checked) {
+    background: url(../images/heart-solid.svg) no-repeat center center;
+}
+
+.story-saved-notif {
+    width: 90%;
+    padding: 1rem;
+    background: var(--secondary);
+    color: var(--white);
+    border-radius: 12px;
+    text-align: center;
+
+    position: absolute;
+    top: 0;
+    transform: translateY(-100%);
+    z-index: 100;
+}
+
+.saved-notif-slide-in {
+    animation: saved-notif-slide-in .2s ease-in-out forwards, saved-notif-slide-out .2s ease-in-out 1.5s forwards;
+}
+
+@keyframes saved-notif-slide-in {
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+@keyframes saved-notif-slide-out {
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+.window-success {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin-top: 1.5rem;
+}
+
+.story-success-text-container {
+    position: relative;
+    height: 50%;
+}
+
+.story-success-text-container p {
+    font-size: 1.25rem;
+    font-weight: bold;
+    line-height: 160%;
+    height: 100%;
+    overflow-y: scroll;
+    padding-bottom: 3rem;
+}
+
+.story-success-text-container span {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 4rem;
+    background: linear-gradient( rgb(255 255 255 / 0) 0%, var(--primary) 100%);
+    bottom: 0;
+    pointer-events: none;
+}
+
+.window-success > span {
+    display: flex;
+
+    margin-top: .5rem;
+    margin-bottom: 1.5rem;
+}
+
+.window-success > .animContainer {
+    width: clamp(10rem, 85%, 21rem);
+    position: absolute;
+    bottom: -4rem;
+    right: -5rem;
+    aspect-ratio: 1/1;
+    pointer-events: none;
+}
+
+.window-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.window-error > img {
+    width: 80%;
+}
