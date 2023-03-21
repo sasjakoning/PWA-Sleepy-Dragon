@@ -1,29 +1,7 @@
 <article id="story" class="window window-story">
     <a href="/" class="nav-back"></a>
 
-    <div class="story-saved-notif">
-        <p></p>
-    </div>
 
-    <section class="window-success">
-        <label for="save-toggle" class="save-toggle-label">
-            <input type="checkbox" id="save-toggle" class="save-toggle">
-        </label>
-        <h2 slot="story-success-title">{{story.title}}</h2>
-        <span>
-            <p>By</p>
-            <p slot="story-success-author">{{story.author}}</p>
-        </span>
-        <div class="story-success-text-container">
-            <p slot="story-success-content" data-tag-name="story-success">
-                {{story.story}}
-                {{!-- Failed to load, try again later. --}}
-            </p>
-            <!-- gradient -->
-            <span></span>
-        </div>
-        <section class="animContainer">
-            <canvas id="canvas-dragon-reading" width="100" height="100"></canvas>
-        </section>
-    </section>
+    {{>story-success}}
+
 </article>
