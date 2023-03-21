@@ -7,8 +7,15 @@ router.get('/', (req, res) => {
 });
 
 router.get('/story', async (req, res) => {
-    res.render('story', {
-        story: await api.insertStory()
+    res.render('story');
+
+    const data = await api.getRandomStory();
+    //  do something here
+});
+
+router.get('/story/:id', async (req, res) => { 
+    res.render('story', { 
+        story: data
     });
 });
 

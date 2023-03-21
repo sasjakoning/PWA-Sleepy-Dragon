@@ -41,7 +41,10 @@ handlebars.engine({
     layoutsDir: __dirname + '/views/layouts',
     extname: 'hbs',
     defaultLayout: 'index',
-    partialsDir: __dirname + '/views/partials'
+    partialsDir: [
+      path.join(__dirname, 'views', 'partials'),
+      path.join(__dirname, 'views', 'partials', 'loading')
+    ]
 }));
 
 app.use('/', router);

@@ -6,14 +6,14 @@
     <label for="save-toggle" class="save-toggle-label">
         <input type="checkbox" id="save-toggle" class="save-toggle">
     </label>
-    <h2 slot="story-success-title">{{story.title}}</h2>
+    <h2>{{title}}</h2>
     <span>
         <p>By</p>
-        <p slot="story-success-author">{{story.author}}</p>
+        <p>{{author}}</p>
     </span>
     <div class="story-success-text-container">
-        <p slot="story-success-content" data-tag-name="story-success">
-            {{story.story}}
+        <p>
+            {{story}}
             {{!-- Failed to load, try again later. --}}
         </p>
         <!-- gradient -->

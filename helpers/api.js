@@ -48,14 +48,6 @@ async function getRandomStory() {
 }
 
 
-async function insertStory() {
-    const story = await getRandomStory();
-    console.log("inserting story")
-
-    return story
-}
-
-
 export default {
     getRandomStory,
     listAllStories,

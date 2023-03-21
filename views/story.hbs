@@ -2,6 +2,10 @@
     <a href="/" class="nav-back"></a>
 
 
-    {{>story-success}}
+    {{>story-loading}}
+
+    {{#if story}}
+        {{>story-success story}}
+    {{/if}}
 
 </article>
