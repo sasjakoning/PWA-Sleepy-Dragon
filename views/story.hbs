@@ -2,10 +2,12 @@
     <a href="/" class="nav-back"></a>
 
 
-    {{>story-loading}}
-
-    {{#if story}}
-        {{>story-success story}}
+    {{#if loading}}
+        {{>story-loading}}
     {{/if}}
+
+    {{#unless loading}}
+        {{>story-success story}}
+    {{/unless}}
 
 </article>

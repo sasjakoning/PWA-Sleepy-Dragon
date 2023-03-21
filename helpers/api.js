@@ -4,6 +4,7 @@ async function listAllStories() {
     console.log(`fetching all stories`);
     const response = await fetch(`https://shortstories-api.onrender.com/stories`);
     const data = await response.json();
+    console.log("fetched all stories")
     return data;
 }
 
@@ -30,20 +31,27 @@ function findStory(allStories, id) {
 }
 
 
-//  Get random story from API
-async function getRandomStory() {
-    // const windowStory = document.querySelector('.window-story');
+// //  Get random story from API
+// async function getRandomStory() {
+//     // const windowStory = document.querySelector('.window-story');
+//     console.log('finding random story');
+//     try {
+//         const response = await fetch(`https://shortstories-api.onrender.com/`);
+//         const data = await response.json();
+//         return data;
+//     }
+//     catch (err) {
+//         console.log(err);
+//     }
+// }
+
+async function getRandomStory(allStories) {
     console.log('finding random story');
     try {
-        const response = await fetch(`https://shortstories-api.onrender.com/`);
-        const data = await response.json();
-        return data;
-    }
-    catch (err) {
-        // On fail, add the 'story-error' element to the DOM
+        const randomStory = allStories[Math.floor(Math.random() * allStories.length)];
+        return randomStory;
+    }catch {
         console.log(err);
-        // const storyError = document.createElement('story-error');
-        // windowStory.appendChild(storyError);
     }
 }
 
@@ -53,5 +61,4 @@ export default {
     listAllStories,
     findStory,
     findSavedStories,
-    insertStory
 };
