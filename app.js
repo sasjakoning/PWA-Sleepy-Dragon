@@ -47,6 +47,19 @@ handlebars.engine({
     ]
 }));
 
+
+app.use((req, res, next) => {
+  res.locals.showLoading = false;
+  next();
+})
+
+app.use((req, res, next) => {
+  if(req.url === "/story") {
+    res.locals.showLoading = true;
+  }
+  next();
+})
+
 app.use('/', router);
 
 

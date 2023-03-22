@@ -11,13 +11,24 @@ router.get('/', (req, res) => {
 
 
 router.get('/story', async (req, res) => {
-    if (!storyData) {
-        res.render('story', { loading: true, story: null });
-        allStories = await api.listAllStories();
-        storyData = await api.getRandomStory(allStories);
-        return res.redirect('/story/' + storyData._id)
-    }
-    res.render('story', { loading: false, story: storyData });
+    // if (!storyData) {
+    //     res.render('story', { loading: true, story: null });
+    //     allStories = await api.listAllStories();
+    //     storyData = await api.getRandomStory(allStories);
+    //     return res.redirect('/story/' + storyData._id)
+    // }
+    // res.render('story', { loading: false, story: storyData });
+
+    // res.render('story', {
+    //     showLoading: res.locals.showLoading
+    // })
+
+    allStories = await api.listAllStories();
+    storyData = await api.getRandomStory(allStories);
+
+    res.redirect('/story/' + storyData._id)
+
+    // res.send(storyData)
 });
 
 router.get('/story/:id', async (req, res) => { 
