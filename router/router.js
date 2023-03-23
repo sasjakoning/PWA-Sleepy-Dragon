@@ -11,10 +11,8 @@ router.get('/', (req, res) => {
 
 
 router.get('/story', async (req, res) => {
-
     storyData = await api.getRandomStory();
     res.redirect('/story/' + storyData._id)
-
 });
 
 router.get('/story/:id', async (req, res) => { 
