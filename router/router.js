@@ -1,8 +1,8 @@
 import api from '../helpers/api.js';
 import express from 'express';
+import localstorage from '../public/js/localstorage.js';
 const router = express.Router();
 
-let allStories = [];
 let storyData;
 
 router.get('/', (req, res) => {
@@ -11,21 +11,28 @@ router.get('/', (req, res) => {
 
 
 router.get('/story', async (req, res) => {
-    if (!storyData) {
-        res.render('story', { loading: true, story: null });
-        allStories = await api.listAllStories();
-        storyData = await api.getRandomStory(allStories);
-        return res.redirect('/story/' + storyData._id)
-    }
-    res.render('story', { loading: false, story: storyData });
+
+    storyData = await api.getRandomStory();
+    res.redirect('/story/' + storyData._id)
+
 });
 
 router.get('/story/:id', async (req, res) => { 
-    if (!storyData || storyData._id !== req.params.id) {
-        storyData = await api.getStory(req.params.id);
-    }
-    res.render('story', { loading: false, story: storyData });
+    res.render('story', { story: storyData });
 });
+
+router.get('/saved', async (req, res) => {
+    res.render('saved', { });
+});
+
+router.get('/saved/:id', async (req, res) => {
+    const allStories = await api.listAllStories();
+    const story = await api.findStory(allStories, req.params.id);
+
+    console.log(story)
+    
+    res.send(story)
+} );
 
 export default router;
 
