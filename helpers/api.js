@@ -21,6 +21,7 @@ function findSavedStories(allStories) {
 
 function findStory(allStories, id) {
     console.log('finding story');
+    console.log(id)
     const matchingStory = allStories.find(story => story._id === id);
 
     if (matchingStory) {
@@ -31,29 +32,29 @@ function findStory(allStories, id) {
 }
 
 
-// //  Get random story from API
-// async function getRandomStory() {
-//     // const windowStory = document.querySelector('.window-story');
-//     console.log('finding random story');
-//     try {
-//         const response = await fetch(`https://shortstories-api.onrender.com/`);
-//         const data = await response.json();
-//         return data;
-//     }
-//     catch (err) {
-//         console.log(err);
-//     }
-// }
-
-async function getRandomStory(allStories) {
+//  Get random story from API
+async function getRandomStory() {
+    // const windowStory = document.querySelector('.window-story');
     console.log('finding random story');
     try {
-        const randomStory = allStories[Math.floor(Math.random() * allStories.length)];
-        return randomStory;
-    }catch {
+        const response = await fetch(`https://shortstories-api.onrender.com/`);
+        const data = await response.json();
+        return data;
+    }
+    catch (err) {
         console.log(err);
     }
 }
+
+// async function getRandomStory(allStories) {
+//     console.log('finding random story');
+//     try {
+//         const randomStory = allStories[Math.floor(Math.random() * allStories.length)];
+//         return randomStory;
+//     }catch {
+//         console.log(err);
+//     }
+// }
 
 
 export default {
