@@ -1,4 +1,5 @@
 import touchHandler from "./touchHandler.js";
+import local from "./localstorage.js";
 
 const backBtn = document.querySelector(".nav-back");
 
@@ -19,6 +20,17 @@ if (window.location.href.includes("saved")) {
     insertSavedContent(data);
 
 }   
+
+// console.log(window.location.hash)
+
+// switch (window.location.href.includes()) {
+//     case "story":
+//         console.log("storyeas")
+//         break;
+
+//     default:
+//         break;
+// }
 
 
 async function fetchSavedContent() {

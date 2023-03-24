@@ -30,6 +30,7 @@ if(process.env.ENVIRONMENT !== 'production') {
 
 app.set('view engine', 'hbs');	
 app.use(express.static(__dirname + '/public'));
+app.use(express.urlencoded({ extended: true }));
 
 
 app.listen(process.env.PORT || port, () => {
@@ -59,6 +60,19 @@ app.use((req, res, next) => {
   }
   next();
 })
+
+app.post('/submit-form', (req, res) => {
+  // get the submitted form data from the request body
+  // const formData = req.body;
+
+  // // do something with the form data
+  // console.log(formData);
+
+  console.log(req.body)
+
+  // send a response
+  res.send('Form submitted successfully!');
+});
 
 app.use('/', router);
 
