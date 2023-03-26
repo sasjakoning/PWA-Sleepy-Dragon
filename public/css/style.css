@@ -288,7 +288,7 @@ main:has(.btn > input[type="checkbox"]:checked) .window-story {
 }
 
 
-story-loading {
+.story-loading {
 	text-align: center;
 	position: absolute;
 	width: 100%;
@@ -297,14 +297,14 @@ story-loading {
 	transform: translate(-50%, -50%);
 }
 
-a:has(saved-storypart) {
+a:has(.saved-storypart) {
 	border-radius: 1rem;
     background: linear-gradient(90deg, rgb(214, 214, 231), rgb(192, 192, 207));
 
 	position: relative;
 }
 
-a:has(saved-storypart)::before {
+a:has(.saved-storypart)::before {
 	content: '';
 	position: absolute;
 	width: 2rem;

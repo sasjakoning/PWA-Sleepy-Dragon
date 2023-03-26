@@ -1,36 +1,36 @@
 import touchHandler from "./touchHandler.js";
 import local from "./localstorage.js";
+import rive from "./rive.js";
+import appWindow from "./windows.js";
 
 const backBtn = document.querySelector(".nav-back");
 
-console.log(backBtn);
+const url = window.location.href;
+const urlArray = url.split("/");
+const urlPath = urlArray[3];
 
-// get current url and see if last part is matches
-
-// if it does, then hide the back button
-
-// localStorage.setItem("storyID", "5fce30db59830a875dba5cc6") 
+console.log(urlPath)
 
 
-if (window.location.href.includes("saved")) {
+switch (urlPath) {
+    case "story":
+        const canvasStory = document.querySelector("#canvas-dragon-reading");
+        rive.riveAnimReading(canvasStory);
+        break;
+    case "saved":
+        const data = await fetchSavedContent();
+        insertSavedContent(data);
+    default:
+        const canvasHome = document.querySelector("#canvas-dragon-title");
+        rive.riveAnimTitle(canvasHome);
 
-
-    const data = await fetchSavedContent();
-    
-    insertSavedContent(data);
-
-}   
-
-// console.log(window.location.hash)
-
-// switch (window.location.href.includes()) {
-//     case "story":
-//         console.log("storyeas")
-//         break;
-
-//     default:
-//         break;
-// }
+        const storyBtn = document.querySelector(".btn-story");
+        storyBtn.addEventListener("click", () => {
+            const storyLoadingWindow = document.querySelector(".story-loading");
+            appWindow.openWindow(storyLoadingWindow, "right");
+        });
+        break;
+}
 
 
 async function fetchSavedContent() {

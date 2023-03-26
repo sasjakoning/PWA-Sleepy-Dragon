@@ -1,7 +1,7 @@
 
 function riveAnimLoad(canvas) {
     const canvasDragonLoadRive = new rive.Rive({
-      src: './images/sleepy_dragon.riv',
+      src: '../images/sleepy_dragon.riv',
       canvas: canvas,
       autoplay: true,
       stateMachines: 'dragon-loading',
@@ -17,7 +17,7 @@ function riveAnimLoad(canvas) {
   
 function riveAnimTitle(canvas) {
 const canvasDragonTitleRive = new rive.Rive({
-    src: './images/sleepy_dragon.riv',
+    src: '../images/sleepy_dragon.riv',
     canvas: canvas,
     autoplay: true,
     stateMachines: 'dragon-sleeping-states',
@@ -31,7 +31,7 @@ const canvasDragonTitleRive = new rive.Rive({
 
 function riveAnimReading(canvas) {
 const canvasDragonReadingRive = new rive.Rive({
-    src: './images/sleepy_dragon.riv',
+    src: '../images/sleepy_dragon.riv',
     canvas: canvas,
     autoplay: true,
     stateMachines: 'dragon-reading',
