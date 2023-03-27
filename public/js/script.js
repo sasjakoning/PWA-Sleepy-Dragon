@@ -1,36 +1,29 @@
-import touchHandler from "./touchHandler.js";
-import local from "./localstorage.js";
-import rive from "./rive.js";
-import appWindow from "./windows.js";
+import router from "./router.js";
 
-const backBtn = document.querySelector(".nav-back");
+router.onRouteChanged(window.location.href)
 
-const url = window.location.href;
-const urlArray = url.split("/");
-const urlPath = urlArray[3];
-
-console.log(urlPath)
-
-
-switch (urlPath) {
-    case "story":
-        const canvasStory = document.querySelector("#canvas-dragon-reading");
-        rive.riveAnimReading(canvasStory);
-        break;
-    case "saved":
-        const data = await fetchSavedContent();
-        insertSavedContent(data);
-    default:
-        const canvasHome = document.querySelector("#canvas-dragon-title");
-        rive.riveAnimTitle(canvasHome);
-
-        const storyBtn = document.querySelector(".btn-story");
-        storyBtn.addEventListener("click", () => {
-            const storyLoadingWindow = document.querySelector(".story-loading");
-            appWindow.openWindow(storyLoadingWindow, "right");
+const registerServiceWorker = async () => {
+    if ("serviceWorker" in navigator) {
+        try {
+            const registration = await navigator.serviceWorker.register("/service-worker.js", {
+            scope: "/",
         });
-        break;
-}
+        if (registration.installing) {
+            console.log("Service worker installing");
+        } else if (registration.waiting) {
+            console.log("Service worker installed");
+        } else if (registration.active) {
+            console.log("Service worker active");
+        }
+        } catch (error) {
+            console.error(`Registration failed with ${error}`);
+        }
+    }
+};
+
+
+registerServiceWorker();
+
 
 
 async function fetchSavedContent() {

@@ -4,6 +4,7 @@ import livereload  from 'livereload';
 import connectLiveReload from 'connect-livereload';
 import path from 'path';
 import router from './router/router.js';
+import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -31,6 +32,7 @@ if(process.env.ENVIRONMENT !== 'production') {
 app.set('view engine', 'hbs');	
 app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 
 app.listen(process.env.PORT || port, () => {
@@ -47,32 +49,6 @@ handlebars.engine({
       path.join(__dirname, 'views', 'partials', 'loading')
     ]
 }));
-
-
-app.use((req, res, next) => {
-  res.locals.showLoading = false;
-  next();
-})
-
-app.use((req, res, next) => {
-  if(req.url === "/story") {
-    res.locals.showLoading = true;
-  }
-  next();
-})
-
-app.post('/submit-form', (req, res) => {
-  // get the submitted form data from the request body
-  // const formData = req.body;
-
-  // // do something with the form data
-  // console.log(formData);
-
-  console.log(req.body)
-
-  // send a response
-  res.send('Form submitted successfully!');
-});
 
 app.use('/', router);
 

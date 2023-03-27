@@ -21,7 +21,6 @@ function findSavedStories(allStories) {
 
 function findStory(allStories, id) {
     console.log('finding story');
-    console.log(id)
     const matchingStory = allStories.find(story => story._id === id);
 
     if (matchingStory) {
@@ -39,6 +38,7 @@ async function getRandomStory() {
     try {
         const response = await fetch(`https://shortstories-api.onrender.com/`);
         const data = await response.json();
+        console.log(data);
         return data;
     }
     catch (err) {

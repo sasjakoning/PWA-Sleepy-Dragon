@@ -74,6 +74,14 @@ function checkIfEmpty(element, window) {
     const config = { attributes: true, childList: true, characterData: true };
     observer.observe(element, config);
 }
+
+async function saveStory(id) {
+  await fetch(`/savestory/${id}`)
+}
+
+async function removeStory(id) {
+  await fetch(`/removestory/${id}`)
+}
   
 export default {
     closeActiveWindow,
@@ -81,4 +89,6 @@ export default {
     removeDuplicateWindow,
     hideWindow,
     checkIfEmpty,
+    saveStory,
+    removeStory
 }
