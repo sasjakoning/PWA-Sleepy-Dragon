@@ -4,11 +4,12 @@
     <h2>Saved stories</h2>
 
     <section class="saved-content">
-        {{#if stories}}
-        hii
-            {{#each stories}}
+        {{#if savedStories}}
+            {{#each savedStories}}
                 {{>story-button this}}
             {{/each}}
+        {{else}}
+            {{>empty}}
         {{/if}}
     </section>
 

@@ -297,14 +297,14 @@ main:has(.btn > input[type="checkbox"]:checked) .window-story {
 	transform: translate(-50%, -50%);
 }
 
-a:has(.saved-storypart) {
+a:has(.window-saved-storypart) {
 	border-radius: 1rem;
     background: linear-gradient(90deg, rgb(214, 214, 231), rgb(192, 192, 207));
 
 	position: relative;
 }
 
-a:has(.saved-storypart)::before {
+a:has(.window-saved-storypart)::before {
 	content: '';
 	position: absolute;
 	width: 2rem;
