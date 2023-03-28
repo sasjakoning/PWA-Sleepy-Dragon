@@ -46,7 +46,7 @@ function onRouteChanged(myHash) {
             // } else {
             //     routes.error()
             // }
-            routes.error()
+            // routes.error()
             break;
     }
 }

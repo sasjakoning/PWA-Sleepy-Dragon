@@ -4,14 +4,8 @@ const router = express.Router();
 
 let storyData;
 
-// let users = {
-//     name: 'test',
-//     age: "20"
-// }
-
 router.get('/', (req, res) => {
-    // res.cookie('userData', users);
-    res.render('home');
+    res.render('home', { offline: false });
 });
 
 router.get("/getuser" , (req, res) => {
@@ -84,6 +78,10 @@ router.get('/saved/:id', async (req, res) => {
     
     res.send(story)
 } );
+
+router.get('/offline', (req, res) => {
+    res.render('home', { offline: true });
+});
 
 export default router;
 
