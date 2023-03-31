@@ -4,6 +4,7 @@ import livereload  from 'livereload';
 import connectLiveReload from 'connect-livereload';
 import path from 'path';
 import router from './router/router.js';
+import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -28,8 +29,10 @@ if(process.env.ENVIRONMENT !== 'production') {
 };
 
 
-app.set('view engine', 'hbs');	
+app.set('view engine', 'hbs');  
 app.use(express.static(__dirname + '/public'));
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 
 app.listen(process.env.PORT || port, () => {
@@ -41,12 +44,10 @@ handlebars.engine({
     layoutsDir: __dirname + '/views/layouts',
     extname: 'hbs',
     defaultLayout: 'index',
-    partialsDir: __dirname + '/views/partials'
+    partialsDir: [
+      path.join(__dirname, 'views', 'partials'),
+      path.join(__dirname, 'views', 'partials', 'loading')
+    ]
 }));
 
 app.use('/', router);
-
-
-
-
-// useful resource about handlebars: https://waelyasmina.medium.com/a-guide-into-using-handlebars-with-your-express-js-application-22b944443b65
