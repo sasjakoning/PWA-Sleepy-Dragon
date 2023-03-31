@@ -99,8 +99,8 @@ router.get('/saved', async (req, res) => {
 
 
 // view offline page
-// router.get('/offline', (req, res) => {
-//     res.render('home', { offline: true });
-// });
+router.get('/offline', (req, res) => {
+    res.render('home', { offline: true });
+});
 
 export default router;
