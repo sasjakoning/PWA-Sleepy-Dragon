@@ -1,4 +1,5 @@
-import local from './localstorage.js';
+// import local from './localstorage.js';
+import utils from './utilities.js';
 
 function swipeAndRemove(element, parent) {
   let isDragging = false;
@@ -29,12 +30,11 @@ function swipeAndRemove(element, parent) {
     if (currentTranslate < threshold) {
       element.classList.add('slide-out');
       setTimeout(() => {
-        parent.parentNode.classList.add('slide-remove');
+        parent.classList.add('slide-remove');
         // Remove the element from the DOM after the animation is complete
-        parent.parentNode.addEventListener('animationend', () => {
-          parent.parentNode.remove();
-          // remove item from localstorage
-          local.deleteStory(parent.dataset.storyId);
+        parent.addEventListener('animationend', () => {
+          parent.remove();
+          utils.removeStory(parent.dataset.storyId);
         });
       }, 500);
     } else {

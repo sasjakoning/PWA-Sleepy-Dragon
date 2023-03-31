@@ -2,6 +2,10 @@
     <section class="animContainer main-title">
         <canvas id="canvas-dragon-title" width="100" height="100"></canvas>
     </section>
+
+    {{#if offline}}
+        {{> offline}}
+    {{/if}}
     
     <a href="/story" class="btn btn-story">
         <h3>Read random story</h3>
@@ -24,4 +28,11 @@
             Credits
         </a>
     </div>
+
+    <section class="story-loading hidden">
+        <h2>Finding you a story...</h2>
+        <section class="animContainer">
+            <canvas id="canvas-dragon-load" width="100" height="100"></canvas>
+        </section>
+    </section>
 </section>
