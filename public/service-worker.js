@@ -29,7 +29,7 @@ self.addEventListener('install', (event) => {
 self.addEventListener("activate", (event) => {
     console.log("Activated")
     event.waitUntil(clients.claim())
-})
+});
 
 self.addEventListener("fetch", (event) => {
     const req = event.request
@@ -51,22 +51,22 @@ self.addEventListener("fetch", (event) => {
     )
 
     /* Save all requests to cache */
-    event.respondWith(
-        caches.open(CORE_CACHE_NAME).then(cache => {
-            return cache.match(event.request)
-                .then(response => {
-                    if(response) {
-                        return response
-                    }
-                    return fetch(event.request)
-                    .then(response => {
-                        cache.put(event.request, response.clone())
-                        return response
-                    })
-                }).catch((err) => {
-                    return caches.open(CORE_CACHE_NAME).then(cache => cache.match('/offline'))
-                })
-        })
-    )
+    // event.respondWith(
+    //     caches.open(CORE_CACHE_NAME).then(cache => {
+    //         return cache.match(event.request)
+    //             .then(response => {
+    //                 if(response) {
+    //                     return response
+    //                 }
+    //                 return fetch(event.request)
+    //                 .then(response => {
+    //                     cache.put(event.request, response.clone())
+    //                     return response
+    //                 })
+    //             }).catch((err) => {
+    //                 return caches.open(CORE_CACHE_NAME).then(cache => cache.match('/offline'))
+    //             })
+    //     })
+    // )
             
 })
