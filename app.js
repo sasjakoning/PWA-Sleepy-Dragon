@@ -31,6 +31,7 @@ if(process.env.ENVIRONMENT !== 'production') {
 
 app.set('view engine', 'hbs');  
 app.use(express.static(__dirname + '/public'));
+app.use('/', express.static(__dirname + '/'));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 

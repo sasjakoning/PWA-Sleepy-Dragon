@@ -1,8 +1,6 @@
-if ('serviceWorker' in navigator) {
-    window.addEventListener("load", function() {
-        navigator.serviceWorker.register('/service-worker.js')
-            .then(function(registration) {
-                return registration.update();
-            })
-    });
-}
+window.addEventListener("load", () => {
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/service-worker.js")
+      console.log("Service Worker Registered")
+    }
+});
