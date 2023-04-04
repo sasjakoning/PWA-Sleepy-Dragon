@@ -1,14 +1,9 @@
-const CORE_CACHE = 7
+const CORE_CACHE = 9
 const CORE_CACHE_NAME = `core-v${CORE_CACHE}`
 const CORE_ASSETS = [
   "/offline",
   "/css/style.css",
-  "/css/story.css",
-  "/css/saved.css",
-  "/images/back.svg",
-  "/images/bg-book.svg",
-  "/images/heart-regular.svg",
-  "/images/heart-solid.svg",
+  "/images/bg-book.svg"
 ]
 
 // install service worker

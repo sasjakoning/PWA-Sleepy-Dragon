@@ -11,6 +11,30 @@
 
 }
 
+/* add fonts */
+
+@font-face {
+	font-family: 'NunitoSans';
+	src: url('/fonts/NunitoSans-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'NunitoSans';
+	src: url('/fonts/NunitoSans-Bold.ttf') format('truetype');
+	font-weight: bold;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'NunitoSans';
+	src: url('/fonts/NunitoSans-Light.ttf') format('truetype');
+	font-weight: light;
+	font-display: swap;
+}
+
+
 /* -------------------------------------------- */
 /*                General styling               */
 /* -------------------------------------------- */
@@ -313,6 +337,13 @@ a:has(.window-saved-storypart)::before {
 	top: 50%;
 	right: 1rem;
 	transform: translate(0, -50%);
+}
+
+.offline {
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
 }
 
 /* -------------------------------------------- */
