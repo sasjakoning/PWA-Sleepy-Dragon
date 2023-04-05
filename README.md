@@ -17,7 +17,7 @@ This repository is all about refactoring Sleepy Dragon using Node.js. The origin
 
 make sure you have node.js installed on your machine.
 
-Clone the repository and run `npm install` to install the dependencies. Then run `npm run dev` to start the development server. 
+Clone the repository and run `npm install` to install the dependencies. Then run `npm run start` to start the development server. 
 
 <br>
 
