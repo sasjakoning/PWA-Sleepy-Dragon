@@ -4,13 +4,9 @@
     <h2>Saved stories</h2>
 
     <section class="saved-content">
-        {{#if savedStories}}
-            {{#each savedStories}}
-                {{>story-button this}}
-            {{/each}}
-        {{else}}
-            {{>empty}}
-        {{/if}}
+        {{#each savedStories}}
+            {{> story-button}}
+        {{/each}}
     </section>
 
 </article>

@@ -1,5 +1,6 @@
 import fetch from "node-fetch"
 
+// get all stories from API
 async function listAllStories() {
     console.log(`fetching all stories`);
     const response = await fetch(`https://shortstories-api.onrender.com/stories`);
@@ -8,17 +9,8 @@ async function listAllStories() {
     return data;
 }
 
-function findSavedStories(allStories) {
-    console.log(`finding saved stories`);
-    const existingStories = JSON.parse(localStorage.getItem('savedStories'));
 
-    if (existingStories != null) {
-        const matchingStories = allStories.filter(story => existingStories.includes(story._id));
-        return matchingStories;
-    }
-
-}
-
+// Find saved stories in all stories from API
 function findStory(allStories, id) {
     console.log('finding story');
     const matchingStory = allStories.find(story => story._id === id);
@@ -33,7 +25,6 @@ function findStory(allStories, id) {
 
 //  Get random story from API
 async function getRandomStory() {
-    // const windowStory = document.querySelector('.window-story');
     console.log('finding random story');
     try {
         const response = await fetch(`https://shortstories-api.onrender.com/`);
@@ -46,20 +37,9 @@ async function getRandomStory() {
     }
 }
 
-// async function getRandomStory(allStories) {
-//     console.log('finding random story');
-//     try {
-//         const randomStory = allStories[Math.floor(Math.random() * allStories.length)];
-//         return randomStory;
-//     }catch {
-//         console.log(err);
-//     }
-// }
-
 
 export default {
     getRandomStory,
     listAllStories,
     findStory,
-    findSavedStories,
 };

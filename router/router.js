@@ -4,34 +4,43 @@ const router = express.Router();
 
 let storyData;
 
+// homepage
 router.get('/', (req, res) => {
     res.render('home', { offline: false });
 });
 
-router.get("/getuser" , (req, res) => {
-    res.send(req.cookies)
-})
-
-
+// Get story from API
 router.get('/story', async (req, res) => {
     storyData = await api.getRandomStory();
     res.redirect('/story/' + 'id=' + storyData._id)
 });
 
-router.get('/story/:id', async (req, res) => { 
-    res.render('story', { story: storyData });
+// Story page
+router.get('/story/:id', async (req, res) => {  
+
+    // if request came from homepage
+    if(storyData){
+        res.render('story', { story: storyData });
+    }else {
+        // If request came from saved stories page
+        const allStories = await api.listAllStories();
+        const story = await api.findStory(allStories, req.params.id);
+
+        res.render('story', { story: story });
+    }
 });
 
-router.get('/savestory/:id', (req, res) => {
-    console.log("setting cookie")
+// Save story in cookie
+router.post('/savestory/:id', (req, res) => {
+    console.log("setting cookie");
 
     const savedStories = req.cookies.savedStories || [];
     savedStories.push(req.params.id);
     res.cookie('savedStories', savedStories);
-
-    res.send("cookie set")
+    res.redirect('back');
 });
 
+// Remove story from cookie
 router.get('/removestory/:id', (req, res) => {
     console.log("removing cookie")
 
@@ -48,50 +57,50 @@ router.get('/removestory/:id', (req, res) => {
     res.send("cookie removed")
 });
 
+// Saved stories page
 router.get('/saved', async (req, res) => {
+    // get all stories
     const allStories = await api.listAllStories();
 
+    // get saved stories from cookie
     const savedStoryIds = req.cookies.savedStories;
-    let savedStories = [];
 
-    if(savedStoryIds) {
-        savedStoryIds.forEach(async (story) => {
-            const storyData = await api.findStory(allStories, story);
-            savedStories.push(storyData);
-        });
-    }else {
-        savedStories = null;
+    async function savedStories() {
+        if(savedStoryIds) {
+            console.log("saved stories")
+            const promises = savedStoryIds.map(async (story) => {
+                const storyData = await api.findStory(allStories, story);
+                return storyData;
+            });
+            return Promise.all(promises);
+        } else {
+            console.log("no saved stories")
+            return null;
+        }
     }
 
-    console.log(savedStories)
 
+    // Render saved stories
     res.render('saved', { 
-        savedStories: savedStories
+        savedStories: await savedStories()
     });
+
 });
 
-router.get('/saved/:id', async (req, res) => {
-    const allStories = await api.listAllStories();
-    const story = await api.findStory(allStories, req.params.id);
 
-    console.log(story)
+// router.get('/saved/:id', async (req, res) => {
+//     const allStories = await api.listAllStories();
+//     const story = await api.findStory(allStories, req.params.id);
+
+//     console.log(story)
     
-    res.send(story)
-} );
+//     res.send(story)
+// } );
 
+
+// view offline page
 router.get('/offline', (req, res) => {
     res.render('home', { offline: true });
 });
 
 export default router;
-
-// app.get('/', async (req, res) => {
-//     res.render('home');
-// }); 
-  
-// app.get('/story', async (req, res) => {
-//     res.render('story', {
-//         layout: 'index',
-//         story: await api.insertStory()
-//     });
-// }); 

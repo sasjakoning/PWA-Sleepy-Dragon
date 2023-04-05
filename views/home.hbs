@@ -5,34 +5,36 @@
 
     {{#if offline}}
         {{> offline}}
+    {{else}}
+        <a href="/story" class="btn btn-story">
+            <h3>Read random story</h3>
+        </a>
+
+        <h3>Featured story</h3>
+
+        <a href="/story/id=5ff6fb389f24d116ce28d6ef" class="btn btn-featured" data-story-id="5ff6fb389f24d116ce28d6ef">
+            <div>
+                <h4>The Mischievous Dog</h4>
+                <p>By Aesop's Fables</p>
+            </div>
+        </a>
+
+        <div class="settings">
+            <a href="/saved" class="btn">
+                Saved stories
+            </a>
+            <a href="/credits" class="btn">
+                Credits
+            </a>
+        </div>
+
+        <section class="story-loading hidden">
+            <h2>Finding you a story...</h2>
+            <section class="animContainer">
+                <canvas id="canvas-dragon-load" width="100" height="100"></canvas>
+            </section>
+        </section>
+
     {{/if}}
     
-    <a href="/story" class="btn btn-story">
-        <h3>Read random story</h3>
-    </a>
-
-    <h3>Featured story</h3>
-
-    <a href="/story/id=5ff6fb389f24d116ce28d6ef" class="btn btn-featured" data-story-id="5ff6fb389f24d116ce28d6ef">
-        <div>
-            <h4>The Astrologer</h4>
-            <p>By Aesop's Fables</p>
-        </div>
-    </a>
-
-    <div class="settings">
-        <a href="/saved" class="btn">
-            Saved stories
-        </a>
-        <a href="/credits" class="btn">
-            Credits
-        </a>
-    </div>
-
-    <section class="story-loading hidden">
-        <h2>Finding you a story...</h2>
-        <section class="animContainer">
-            <canvas id="canvas-dragon-load" width="100" height="100"></canvas>
-        </section>
-    </section>
 </section>
