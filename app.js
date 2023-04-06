@@ -9,6 +9,11 @@ const port = process.env.PORT || 3000;
 
 const app = express(); 
 
+app.use((req, res, next) => {
+  res.setHeader('Cache-Control', 'max-age=' + 60 * 60 * 24 * 365);
+  next();
+});
+
 app.set('view engine', 'hbs');  
 app.use(express.static(__dirname + '/public'));
 app.use('/', express.static(__dirname + '/'));

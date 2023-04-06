@@ -1,4 +1,4 @@
-const CORE_CACHE = 9
+const CORE_CACHE = 10
 const CORE_CACHE_NAME = `core-v${CORE_CACHE}`
 const CORE_ASSETS = [
   "/offline",
